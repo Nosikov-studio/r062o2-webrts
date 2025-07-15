@@ -1,0 +1,18 @@
+
+<html lang="en">
+<head>
+
+    <title>P2P</title>
+    <script src="socket.io/socket.io.js"></script>
+    <script>
+        var clientSocket = null;
+
+        window.onload = function() {
+            clientSocket = io.connect('http://192.168.1.101:8111')
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

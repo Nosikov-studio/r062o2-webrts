@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>P2P</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        let clientSocket = null;
+
+        window.onload = function() {
+            // Подключаемся к серверу socket.io (текущий хост и порт)
+            clientSocket = io('http://192.168.1.101:8111');
+
+            clientSocket.on('connect', () => {
+                console.log('Connected to server, socket id:', clientSocket.id);
+            });
+
+            clientSocket.on('disconnect', () => {
+                console.log('Disconnected from server');
+            });
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
