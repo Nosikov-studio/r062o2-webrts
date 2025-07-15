@@ -1,0 +1,22 @@
+{
+  "name": "r062o2-webrts",
+  "version": "1.0.0",
+  "description": "Учебный проект \"o2\" на тему WebRTS. По мотивам урока https://www.youtube.com/watch?v=7Kr_pzD_hCk",
+  "main": "serv.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nosikov-studio/r062o2-webrts.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nosikov-studio/r062o2-webrts/issues"
+  },
+  "homepage": "https://github.com/Nosikov-studio/r062o2-webrts#readme",
+  "dependencies": {
+    "socket.io": "^4.8.1"
+  }
+}
