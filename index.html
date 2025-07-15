@@ -11,6 +11,57 @@
             // Подключаемся к серверу socket.io (текущий хост и порт)
             clientSocket = io('http://192.168.1.101:8111');
 
+            // (function(){
+            //     navigator.getUserMedia = navigator.getUserMedia || navigator.webKitgetUserMedia;
+            //     window.URL = window.URL || window.webKitURL;
+            //     navigator.getUserMedia({video:true, audio:true}, function(localMediaStream){
+            //         document.getElementById('myStream').src = webkitURL.createObjectURL(localMediaStream);
+            //         document.getElementById('myStream').style.display = 'inline';
+            //     });
+            // })();
+//*****************************переделка*********************************************************************
+// (function() {
+//     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+//         navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+//             .then(function(localMediaStream) {
+//                 const video = document.getElementById('myStream');
+//                 // В современных браузерах можно просто назначить stream напрямую
+//                 if ("srcObject" in video) {
+//                     video.srcObject = localMediaStream;
+//                 } else {
+//                     // Для старых браузеров fallback
+//                     video.src = window.URL.createObjectURL(localMediaStream);
+//                 }
+//                 video.style.display = 'inline';
+//                 video.play();
+//             })
+//             .catch(function(err) {
+//                 console.error("Error accessing media devices.", err);
+//             });
+//     } else {
+//         console.error("getUserMedia not supported in this browser.");
+//     }
+// })();
+//***************************************************************************************************
+//*************************************переделка 2**************************************************************
+// const video = document.getElementById('myStream');
+// let stream;
+
+// async function startStream() {
+// try { stream = await navigator.mediaDevices.getUserMedia({
+//       audio: true,
+//       video: true
+// });
+
+//     video.srcObject = stream; // отображаем поток в элементе <video>
+// } catch (err) {
+//    console.error(`Ошибка при доступе к камере/микрофону: ${err}`);
+// }
+// }
+
+// startStream();
+
+//***************************************************************************************************
             clientSocket.on('connect', () => {
                 console.log('Connected to server, socket id:', clientSocket.id);
             });
@@ -22,6 +73,30 @@
     </script>
 </head>
 <body>
+    <p>hello!!!!!!!!</p>
+    <video id="videostreamOutput"  width='300' autoplay src=""> </video>
+    <!-- <video id="myStream" width='250' autoplay src=""> </video> -->
+    <video id="myStream" autoplay></video>
     
 </body>
+<script>
+//*************************************переделка 3***********************************************************    
+const video = document.getElementById('myStream');
+let stream;
+
+async function startStream() {
+try { stream = await navigator.mediaDevices.getUserMedia({
+      audio: true,
+      video: true
+});
+
+    video.srcObject = stream; // отображаем поток в элементе <video>
+} catch (err) {
+   console.error(`Ошибка при доступе к камере/микрофону: ${err}`);
+}
+}
+
+startStream();
+//***************************************************************************************************
+</script>
 </html>
